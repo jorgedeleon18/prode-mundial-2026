@@ -1,5 +1,24 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
+
+// Storage universal: localStorage en web, AsyncStorage en móvil
+const storage = {
+  getItem: async (key) => {
+    if (Platform.OS === 'web') {
+      return localStorage.getItem(key);
+    }
+    const AS = require('@react-native-async-storage/async-storage').default;
+    return AS.getItem(key);
+  },
+  setItem: async (key, value) => {
+    if (Platform.OS === 'web') {
+      localStorage.setItem(key, value);
+      return;
+    }
+    const AS = require('@react-native-async-storage/async-storage').default;
+    return AS.setItem(key, value);
+  },
+};
 
 const AppCtx = createContext(null);
 
@@ -11,7 +30,7 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading]     = useState(true);
 
   useEffect(() => {
-    AsyncStorage.getItem('darkMode').then(v => {
+    storage.getItem('darkMode').then(v => {
       if (v === '1') setDarkMode(true);
       setLoading(false);
     });
@@ -20,7 +39,7 @@ export const AppProvider = ({ children }) => {
   const toggleDark = async () => {
     const next = !darkMode;
     setDarkMode(next);
-    await AsyncStorage.setItem('darkMode', next ? '1' : '0');
+    await storage.setItem('darkMode', next ? '1' : '0');
   };
 
   const totalPts = () =>

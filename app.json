@@ -25,7 +25,6 @@
       "versionCode": 1,
       "permissions": ["INTERNET"]
     },
-    "plugins": ["@react-native-async-storage/async-storage"],
     "extra": {
       "eas": { "projectId": "REEMPLAZAR-CON-TU-PROJECT-ID" }
     }
