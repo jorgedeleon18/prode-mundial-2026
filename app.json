@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Prode AUBASA 2026",
+    "slug": "prode-aubasa-2026",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#00AEC3"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.aubasa.prode2026",
+      "buildNumber": "1"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#00AEC3"
+      },
+      "package": "com.aubasa.prode2026",
+      "versionCode": 1,
+      "permissions": ["INTERNET"]
+    },
+    "plugins": ["@react-native-async-storage/async-storage"],
+    "extra": {
+      "eas": { "projectId": "REEMPLAZAR-CON-TU-PROJECT-ID" }
+    }
+  }
+}
